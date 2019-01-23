@@ -2,9 +2,9 @@ package cardPackage;
 
 public class Card 
 {
-	public int value; //actual point value of the card
-	public String suit;
-	public String cNum; //num or letter displayed on card
+	private int value; //actual point value of the card
+	private String suit;
+	private String cNum; //num or letter displayed on card
 	private String[] suits = {"clubs","hearts","spades","diamonds"};
 	private String[] nums= {"ace","two","three","four","five","six","seven","eight","nine",
 			"ten","jack","queen","king"};
@@ -14,7 +14,7 @@ public class Card
 	{
 		this.value=value;
 	}
-	private int getValue()
+	public int getValue()
 	{
 		int value=0;
 		switch(this.cNum)
@@ -49,12 +49,12 @@ public class Card
 	{
 		this.suit=suit;
 	}
-	private String getSuit(String suit)
+	public String getSuit(String suit)
 
 	{
 		return this.suit;
 	}
-	private String getcNum()
+	public String getcNum()
 	{
 		return this.cNum;
 	}

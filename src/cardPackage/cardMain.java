@@ -1,5 +1,5 @@
 package cardPackage;
-import java.util.*;
+//import java.util.*;
 import java.util.Scanner;
 import cardPackage.Hand;
 
@@ -35,17 +35,17 @@ public class cardMain
 		dealerHand.Add(c);
 
 	}
-	public void playerDisplay()
+	public static void playerDisplay()
 	{
 		
 	}
-	public void dealerDisplay()
+	public static void dealerDisplay()
 	{
 		
 		Card c=dealerHand.First();
 		System.out.println("The dealer is showing a "+c.suit+c.cNum);
 	}
-	public void play()
+	public static void play()
 	{
 		dealerDisplay();
 	}
