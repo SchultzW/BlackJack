@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Deck 
 {
-    private List<Card>deck=new ArrayList<Card>();
+    private static List<Card>deck=new ArrayList<Card>();
     private String[] suits = {"clubs","hearts","spades","diamonds"};
 	private String[] nums= {"ace","two","three","four","five","six","seven","eight","nine",
 			"ten","jack","queen","king"};
@@ -23,6 +23,10 @@ public class Deck
                 deck.add(c);
             }
         }
+    }
+    public List<Card> getDeck()
+    {
+        return deck;
     }
     
     public void Shuffle()
