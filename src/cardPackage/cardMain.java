@@ -43,7 +43,7 @@ public class cardMain
 	{
 		
 		Card c=dealerHand.First();
-		System.out.println("The dealer is showing a "+c.suit+c.cNum);
+		System.out.println("The dealer is showing a "+c.getSuit()+c.getcNum());
 	}
 	public static void play()
 	{

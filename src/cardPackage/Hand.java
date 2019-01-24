@@ -17,7 +17,7 @@ public class Hand
         int score=0;
         for (Card c : hand) 
         {
-            score+=c.value;
+            score+=c.getValue();
         }
         return score;
     }

@@ -31,20 +31,26 @@ class cardTest {
 	 public void testSuit()
 	 {
 		
-	 	assertEquals(S5.suit,"spades");
-	 	assertNotEquals(DK.suit,"Clubs");
+	 	assertEquals(S5.getSuit(),"spades");
+	 	assertNotEquals(DK.getSuit(),"Clubs");
 	 }
 	 @Test
 	 public void testNum()
 	 {
 		
-	 	assertEquals(S5.cNum,"five");
-	 	assertEquals(DK.cNum,"king");
+	 	assertEquals(S5.getcNum(),"five");
+	 	assertEquals(DK.getcNum(),"king");
 	 }
 	 @Test
-	 public void testValue()
+	 public void testValueS5()
 	 {
 	 	assertEquals(S5.getValue(),5);
+	 	
+	 }
+	 @Test
+	 public void testValueDK()
+	 {
+	 	
 	 	assertEquals(DK.getValue(),10);
 	 }
 	

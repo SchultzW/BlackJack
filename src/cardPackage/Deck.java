@@ -65,4 +65,9 @@ public class Deck
         int count=deck.size();
         return count;
     }
+    public Card peek()
+    {
+    	Card c=deck.get(0);
+    	return c;
+    }
 }

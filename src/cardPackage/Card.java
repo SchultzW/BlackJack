@@ -21,27 +21,37 @@ public class Card
 		{
 		case "ace":
 			value= 11;
+			break;
 		case "two":
 			value= 2;
+			break;
 		case "three":
 			value= 3;
+			break;
 		case "four":
 			value= 4;
+			break;
 		case "five":
 			value= 5;
+			break;
 		case "six":
 			value= 6;
+			break;
 		case "seven":
 			value= 7;
+			break;
 		case "eight":
 			value= 8;
+			break;
 		case "nine":
 			value= 9;
+			break;
 		case "ten":
 		case "jack":
 		case"queen":
 		case"king":
-			value= 10;		
+			value= 10;
+			break;
 		}
 		return value;
 	}
@@ -49,7 +59,7 @@ public class Card
 	{
 		this.suit=suit;
 	}
-	public String getSuit(String suit)
+	public String getSuit()
 
 	{
 		return this.suit;
