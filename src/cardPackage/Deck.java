@@ -40,7 +40,7 @@ public class Deck
             deckList.remove(n);
             deckList.add(temp);
         }
-        for(int j=0;j<54;j++)
+        for(int j=0;j<52;j++)
         {
         	temp=deckList.get(j);
         	deckList.remove(j);
