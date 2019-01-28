@@ -7,18 +7,17 @@ import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.JUnitCore;
-import org.junit.runner.Result;
-import org.junit.runner.notification.Failure;
+
 
 class DeckTest
 {
-	Deck myDeck=new Deck();
+	Deck myDeck;
 
 	
-	@Before
-	public void setUp()
+	@BeforeEach
+	public void setUp() throws Exception
 	{
 		myDeck=new Deck();
 	}
@@ -38,7 +37,7 @@ class DeckTest
 	@Test
 	public void testCount()
 	{
-		assertEquals(myDeck.count(),54);
+		assertEquals(myDeck.count(),52);
 	}
 	@Test
 	public void testDraw()
@@ -51,14 +50,15 @@ class DeckTest
 		assertTrue(c!=c3);
 	}
 	@Test
-	public void testIsEmpty()
+	public void testIsEmpty() throws Exception
 	{
-		int count=myDeck.count();
-		for(int i=0;0<=count;i++)
+		Deck emptyDeck=new Deck();	
+		int count=emptyDeck.count()-1;
+		for(int i=0;i<=count;i++)
 		{
-			myDeck.draw();
+			emptyDeck.draw();
 		}
-		assertEquals(myDeck.count(),0);
+		assertTrue(emptyDeck.isEmpty());
 	}
 	
 

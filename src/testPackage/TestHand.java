@@ -5,22 +5,23 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import cardPackage.BlackJackHand;
 import cardPackage.Card;
 import cardPackage.Hand;
 
 class TestHand 
 {
 
-	 Hand h=new Hand();
-     Card S5=new Card("spades", "five");
-     Card DK=new Card("diamonds","king");
+	 BlackJackHand h;
+     Card S5;
+     Card DK;
      Boolean bool=true;
 	@BeforeEach
 	void setUp() throws Exception 
 	{
-		 Hand h=new Hand();
-	     Card S5=new Card("spades", "five");
-	     Card DK=new Card("diamonds","king");
+		 h=new BlackJackHand();
+	     S5=new Card("spades", "five");
+	     DK=new Card("diamonds","king");
 	     h.Add(DK);
 	     h.Add(S5);
 	     bool=true;
@@ -36,8 +37,8 @@ class TestHand
 	 @Test
 	 public void testScore()
 	 {
-		  h.Add(DK);
-		     h.Add(S5);
+		 h.Add(DK);
+		 h.Add(S5);
 		 assertEquals(h.Score(),15);
 		 
 
@@ -45,8 +46,8 @@ class TestHand
 	 @Test
 	 public void testBust()
 	 {
-		  h.Add(DK);
-		     h.Add(S5);
+		h.Add(DK);
+		h.Add(S5);
 		h.Add(DK);
 		assertTrue(h.Bust());
 		
@@ -54,27 +55,27 @@ class TestHand
 	 @Test
 	 public void testClearHand()
 	 {
-		  h.Add(DK);
-		     h.Add(S5);
-		h.ClearHand();
-		assertEquals(h.Count(),0);
+		Hand myHand=new Hand();
+		myHand.ClearHand();
+		assertEquals(0,h.Count());
 	 }
 	
 	 @Test
 	 public void testFirst()
 	 {
-		  h.Add(DK);
-		     h.Add(S5);
-		Card first=h.First();
-		assertEquals(S5.getSuit(),first.getSuit());
-		assertEquals(S5.getcNum(),first.getcNum());
+		Hand myHand=new Hand();
+		myHand.Add(DK);
+		myHand.Add(S5);
+		Card first=myHand.First();
+		assertEquals(DK.getSuit(),first.getSuit());
+		assertEquals(DK.getcNum(),first.getcNum());
 		
 	 }
 	 @Test
-	 public void testAdd()
+	 public void testAdd() throws Exception
 	 {	 
 		 h.Add(DK);
-          h.Add(S5);
+         h.Add(S5);
 		 Card c=new Card("spades", "five");
 		 Hand h1=new Hand();
 		 h1.Add(c);

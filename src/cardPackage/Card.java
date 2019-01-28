@@ -1,18 +1,27 @@
 package cardPackage;
 
+import java.util.Arrays;
+
 public class Card 
 {
 	private int value; //actual point value of the card
 	private String suit;
 	private String cNum; //num or letter displayed on card
-	private String[] suits = {"clubs","hearts","spades","diamonds"};
-	private String[] nums= {"ace","two","three","four","five","six","seven","eight","nine",
-			"ten","jack","queen","king"};
+	//private String[] suits = {"clubs","hearts","spades","diamonds"};
+	//private String[] nums= {"ace","two","three","four","five","six","seven","eight","nine",
+	//		"ten","jack","queen","king"};
 	
 	
-	private void setValue(int value)
+	private void setValue(int value) throws Exception
 	{
-		this.value=value;
+		//validate
+		if(Arrays.asList(Deck.nums).contains(value))
+		{
+			this.value=value;
+		}
+		else
+			throw new Exception("That is not a valid value for a card");
+		
 	}
 	public int getValue()
 	{
@@ -55,9 +64,16 @@ public class Card
 		}
 		return value;
 	}
-	private void setSuit(String suit)
+	private void setSuit(String suit) throws Exception
 	{
-		this.suit=suit;
+		suit=suit.toLowerCase();
+		if(Arrays.asList(Deck.suits).contains(suit))
+		{
+			this.suit=suit;
+		}
+		else
+			throw new Exception("That is not a valid suit for a card");
+		
 	}
 	public String getSuit()
 
@@ -68,16 +84,24 @@ public class Card
 	{
 		return this.cNum;
 	}
-	private void SetCNum(String cNum)
+	private void setCNum(String cNum) throws Exception
 	{
-		this.cNum=cNum;
+		suit=suit.toLowerCase();
+		if(Arrays.asList(Deck.nums).contains(cNum))
+		{
+			this.cNum=cNum;
+		}
+		else
+			throw new Exception("That is not a valid face value for a card");
+		
 	}
 	
-	public Card(String aSuit,String aCNum)
+	public Card(String aSuit,String aCNum) throws Exception
 	{
-		suit=aSuit;
+		setSuit(aSuit);
+		setCNum(aCNum);
 		
-		cNum=aCNum;
+		
 	}
 	public String toString(Card aCard)
 	{

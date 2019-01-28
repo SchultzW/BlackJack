@@ -10,11 +10,11 @@ public class cardMain
 	static String newLine = System.getProperty("line.separator");
 	static Scanner in = new Scanner(System.in);
 	static Deck deck;
-	static Hand playerHand;
-	static Hand dealerHand;
+	static BlackJackHand playerHand;
+	static BlackJackHand dealerHand;
 	static int dealerStay=16;
 
-	public static void main(String args[]) throws InterruptedException
+	public static void main(String args[]) throws Exception
 	{
 		//System.out.println("");
 		//in.nextLine()
@@ -23,21 +23,30 @@ public class cardMain
 		play();
 	}
 	//set up
-	public static void setUp()
+	public static void setUp() throws Exception
 	{
 		deck=new Deck();
 		deck.Shuffle();
-		playerHand=new Hand();
+		playerHand=new BlackJackHand();
 		Card c=deck.draw();
 		playerHand.Add(c);
 		c=deck.draw();
 		playerHand.Add(c);
-		dealerHand=new Hand();
+		dealerHand=new BlackJackHand();
 		c=deck.draw();
 		dealerHand.Add(c);
 		c=deck.draw();
 		dealerHand.Add(c);
 
+	}
+	
+	public static void checkBlackJack(BlackJackHand hand, String who) throws Exception
+	{
+		if(hand.BlackJack()==true)
+		{
+			System.out.println(who+" has BlackJack! How lucky!");
+			playAgain();
+		}
 	}
 	public static void playerDisplay()
 	{
@@ -55,13 +64,17 @@ public class cardMain
 		Card c=dealerHand.First();
 		System.out.println("The dealer is showing a "+c.getcNum()+" of "+c.getSuit());
 	}
-	public static void play() throws InterruptedException
+	public static void play() throws Exception
 	{
+		if(deck.count()<=10)
+		{
+			setUp();
+		}
 		dealerDisplay();
 		playerDisplay();
 		hitOrStay();
 	}
-	public static Boolean checkBust(Hand h)
+	public static Boolean checkBust(BlackJackHand h)
 	{
 		Boolean bust=false;
 		if(h.Bust()==true)
@@ -71,7 +84,7 @@ public class cardMain
 		}
 		return bust;
 	}
-	public static void hitOrStay() throws InterruptedException
+	public static void hitOrStay() throws Exception
 	{
 		System.out.println("Would you like to hit or stay?(hit/stay)");
 		String choice=in.nextLine();
@@ -91,7 +104,7 @@ public class cardMain
 			hitOrStay();
 		}
 	}
-	public static void hit(Hand h,String who) throws InterruptedException
+	public static void hit(BlackJackHand h,String who) throws Exception
 	{
 		Card c=deck.draw();
 		
@@ -112,12 +125,12 @@ public class cardMain
 			
 		
 	}
-	public static void stay(Hand h) throws InterruptedException
+	public static void stay(BlackJackHand h) throws Exception
 	{
 		System.out.println("You stay with a score of "+h.Score());
 		dealerMove();
 	}
-	public static void dealerMove() throws InterruptedException
+	public static void dealerMove() throws Exception
 	{
 		System.out.println("The dealer goes.");
 		
@@ -125,7 +138,7 @@ public class cardMain
 		
 		
 	}
-	public static void dealerDecsion() throws InterruptedException
+	public static void dealerDecsion() throws Exception
 	{
 		TimeUnit.SECONDS.sleep(3);
 		if(dealerHand.Bust().equals(true))
@@ -149,7 +162,7 @@ public class cardMain
 	{
 		System.out.println(who+" has busted!");
 	}
-	public static void finish() throws InterruptedException
+	public static void finish() throws Exception
 	{
 		System.out.println("You have "+playerHand.Score());
 		System.out.println("The dealer has "+dealerHand.Score());
@@ -175,7 +188,7 @@ public class cardMain
 		
 		playAgain();
 	}
-	public static void playAgain() throws InterruptedException
+	public static void playAgain() throws Exception
 	{
 		System.out.println("Would you like to play again? (Yes/No)");
 		String choice=in.nextLine();

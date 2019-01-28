@@ -5,13 +5,13 @@ import java.util.*;
 public class Deck 
 {
     private  List<Card>deckList=new ArrayList<Card>();
-    private String[] suits = {"clubs","hearts","spades","diamonds"};
-	private String[] nums= {"ace","two","three","four","five","six","seven","eight","nine",
+    public static String[] suits = {"clubs","hearts","spades","diamonds"};
+	public static String[] nums= {"ace","two","three","four","five","six","seven","eight","nine",
 			"ten","jack","queen","king"};
     
     
     
-    public Deck()
+    public Deck() throws Exception
     {
         List<Card>deck=new ArrayList<Card>();
         for(int i=0;i<suits.length;i++)
@@ -78,4 +78,5 @@ public class Deck
     	Card c=deckList.get(0);
     	return c;
     }
+    
 }
