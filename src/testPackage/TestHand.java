@@ -22,8 +22,8 @@ class TestHand
 		 h=new BlackJackHand();
 	     S5=new Card("spades", "five");
 	     DK=new Card("diamonds","king");
-	     h.Add(DK);
-	     h.Add(S5);
+	     h.add(DK);
+	     h.add(S5);
 	     bool=true;
 	}
 	
@@ -37,8 +37,8 @@ class TestHand
 	 @Test
 	 public void testScore()
 	 {
-		 h.Add(DK);
-		 h.Add(S5);
+		 h.add(DK);
+		 h.add(S5);
 		 assertEquals(h.Score(),15);
 		 
 
@@ -46,9 +46,9 @@ class TestHand
 	 @Test
 	 public void testBust()
 	 {
-		h.Add(DK);
-		h.Add(S5);
-		h.Add(DK);
+		h.add(DK);
+		h.add(S5);
+		h.add(DK);
 		assertTrue(h.Bust());
 		
 	 }
@@ -56,17 +56,17 @@ class TestHand
 	 public void testClearHand()
 	 {
 		Hand myHand=new Hand();
-		myHand.ClearHand();
-		assertEquals(0,h.Count());
+		myHand.clearHand();
+		assertEquals(0,h.count());
 	 }
 	
 	 @Test
 	 public void testFirst()
 	 {
 		Hand myHand=new Hand();
-		myHand.Add(DK);
-		myHand.Add(S5);
-		Card first=myHand.First();
+		myHand.add(DK);
+		myHand.add(S5);
+		Card first=myHand.first();
 		assertEquals(DK.getSuit(),first.getSuit());
 		assertEquals(DK.getcNum(),first.getcNum());
 		
@@ -74,12 +74,12 @@ class TestHand
 	 @Test
 	 public void testAdd() throws Exception
 	 {	 
-		 h.Add(DK);
-         h.Add(S5);
+		 h.add(DK);
+         h.add(S5);
 		 Card c=new Card("spades", "five");
 		 Hand h1=new Hand();
-		 h1.Add(c);
-		 assertEquals(h1.First().getSuit(),c.getSuit());
-		 assertEquals(h1.First().getcNum(),c.getcNum());
+		 h1.add(c);
+		 assertEquals(h1.first().getSuit(),c.getSuit());
+		 assertEquals(h1.first().getcNum(),c.getcNum());
 	 }
 }

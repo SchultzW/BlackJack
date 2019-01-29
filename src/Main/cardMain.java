@@ -2,6 +2,7 @@ package Main;
 //import java.util.*;
 import java.util.Scanner;
 
+import cardPackage.BlackJackHand;
 import cardPackage.Card;
 import cardPackage.Deck;
 import cardPackage.Hand;
@@ -11,10 +12,10 @@ public class cardMain
 	static String newLine = System.getProperty("line.separator");
 	Scanner in = new Scanner(System.in);
 	static Deck deck;
-	static Hand playerHand;
-	static Hand dealerHand;
+	static BlackJackHand playerHand;
+	static BlackJackHand dealerHand;
 
-	public static void main(String args[])
+	public static void main(String args[]) throws Exception
 	{
 		//System.out.println("");
 		//in.nextLine()
@@ -23,26 +24,26 @@ public class cardMain
 		play();
 	}
 	//set up
-	public static void setUp()
+	public static void setUp() throws Exception
 	{
 		deck=new Deck();
 		deck.Shuffle();
-		playerHand=new Hand();
+		playerHand=new BlackJackHand();
 		Card c=deck.draw();
-		playerHand.Add(c);
+		playerHand.add(c);
 		c=deck.draw();
-		playerHand.Add(c);
-		dealerHand=new Hand();
+		playerHand.add(c);
+		dealerHand=new BlackJackHand();
 		c=deck.draw();
-		dealerHand.Add(c);
+		dealerHand.add(c);
 		c=deck.draw();
-		dealerHand.Add(c);
+		dealerHand.add(c);
 
 	}
 	public static void playerDisplay()
 	{
 		System.out.println(newLine+"Your total score is "+playerHand.Score());
-		for(int i=0;i<playerHand.Count();i++)
+		for(int i=0;i<playerHand.count();i++)
 		{
 			Card c=playerHand.indexOf(i);
 			System.out.println("You have a "+c.getcNum()+" of "+c.getSuit());
@@ -52,7 +53,7 @@ public class cardMain
 	public static void dealerDisplay()
 	{
 		
-		Card c=dealerHand.First();
+		Card c=dealerHand.first();
 		System.out.println("The dealer is showing a "+c.getcNum()+" of "+c.getSuit());
 	}
 	public static void play()
@@ -63,7 +64,7 @@ public class cardMain
 	public static Boolean checkBust(Hand h)
 	{
 		Boolean bust=false;
-		if(h.Bust()==true)
+		if(h.bust()==true)
 		{
 			System.out.println("You busted.");
 			bust=true;
@@ -94,8 +95,8 @@ public class cardMain
 	{
 		Card c=deck.draw();
 		System.out.println("You get a "+c.getcNum()+" of "+c.getSuit());
-		System.out.println("Your new score is "+h.Score());
-		Boolean bust=h.Bust();
+		System.out.println("Your new score is "+h.score());
+		Boolean bust=h.bust();
 		if(bust==false)
 		{
 			hitOrStay();
@@ -104,7 +105,7 @@ public class cardMain
 	}
 	public void stay(Hand h)
 	{
-		System.out.println("You stay with a score of "+h.Score());
+		System.out.println("You stay with a score of "+h.score());
 		dealerMove();
 	}
 	public void dealerMove()

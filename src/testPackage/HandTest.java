@@ -22,13 +22,13 @@ public class HandTest
      Card DK;
      Boolean bool;
 	@BeforeEach
-	public void SetUp()
+	public void SetUp() throws Exception
 	{
 		 Hand h=new Hand();
 	     Card S5=new Card("spades", "five");
 	     Card DK=new Card("diamonds","king");
-	     h.Add(DK);
-	     h.Add(S5);
+	     h.add(DK);
+	     h.add(S5);
 	     bool=true;
 	     
 	}
@@ -41,7 +41,7 @@ public class HandTest
 	 public void testScore()
 	 {
 		
-		 assertEquals(h.Score(),15);
+		 assertEquals(h.score(),15);
 		 
 
 	 } 
@@ -49,34 +49,34 @@ public class HandTest
 	 public void testBust()
 	 {
 		
-		h.Add(DK);
-		assertTrue(h.Bust());
+		h.add(DK);
+		assertTrue(h.bust());
 		
 	 }
 	 @Test
 	 public void testClearHand()
 	 {
 		
-		h.ClearHand();
-		assertEquals(h.Count(),0);
+		h.clearHand();
+		assertEquals(h.count(),0);
 	 }
 	
 	 @Test
 	 public void testFirst()
 	 {
 		
-		Card first=h.First();
+		Card first=h.first();
 		assertEquals(S5.getSuit(),first.getSuit());
 		assertEquals(S5.getcNum(),first.getcNum());
 		
 	 }
 	 @Test
-	 public void testAdd()
+	 public void testAdd() throws Exception
 	 {	
 		 Card c=new Card("spades", "five");
 		 Hand h1=new Hand();
-		 h1.Add(c);
-		 assertEquals(h1.First().getSuit(),c.getSuit());
-		 assertEquals(h1.First().getcNum(),c.getcNum());
+		 h1.add(c);
+		 assertEquals(h1.first().getSuit(),c.getSuit());
+		 assertEquals(h1.first().getcNum(),c.getcNum());
 	 }
 }
