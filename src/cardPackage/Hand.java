@@ -8,11 +8,32 @@ public class Hand
     //constructor
     public Hand()
     {
-        hands=new ArrayList<Card>();
+        //hands=new ArrayList<Card>();
         
     }
     
-    public void ClearHand()
+    public int score()
+    {
+        int score=0;
+        for (Card c : hands) 
+        {
+            score+=c.getValue();
+        }
+        return score;
+    }
+
+    public Boolean bust()
+    {
+        Boolean bust=false;
+        int score=this.score();
+        if(score>21)
+        {
+            bust=true;
+        }
+        return bust;
+    }
+
+    public void clearHand()
     {
       
         for(Card c:hands)
@@ -20,16 +41,16 @@ public class Hand
         	hands.remove(c);
         }
     }
-    public void Add(Card c)
+    public void add(Card c)
     {
         hands.add(c);
     }
-    public Card First()
+    public Card first()
     {
         Card first=hands.get(0);
         return first;
     }
-    public int Count()
+    public int count()
     {
     	 return hands.size();
     	

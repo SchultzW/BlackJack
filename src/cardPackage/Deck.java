@@ -13,7 +13,8 @@ public class Deck
     
     public Deck() throws Exception
     {
-        List<Card>deck=new ArrayList<Card>();
+        @SuppressWarnings("unused")
+		List<Card>deck=new ArrayList<Card>();
         for(int i=0;i<suits.length;i++)
         {
             for(int j=0;j<nums.length;j++)
